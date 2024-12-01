@@ -1,0 +1,47 @@
+[
+  {
+    "Entity": "Almond milk",
+    "Code": "",
+    "Year": 2013,
+    "Land use of milks (m2)": 0.496359329,
+    "GHG emissions of milks (kg CO2eq)": 0.702077383,
+    "Water use of milks (L)": 371.4593343,
+    "Eutrophication from milks (g PO43-eq)": 1.50290777
+  },
+  {
+    "Entity": "Dairy milk",
+    "Code": "",
+    "Year": 2013,
+    "Land use of milks (m2)": 8.95,
+    "GHG emissions of milks (kg CO2eq)": 3.15,
+    "Water use of milks (L)": 628.2,
+    "Eutrophication from milks (g PO43-eq)": 10.65
+  },
+  {
+    "Entity": "Oat milk",
+    "Code": "",
+    "Year": 2013,
+    "Land use of milks (m2)": 0.76,
+    "GHG emissions of milks (kg CO2eq)": 0.903126194,
+    "Water use of milks (L)": 48.24,
+    "Eutrophication from milks (g PO43-eq)": 1.622562983
+  },
+  {
+    "Entity": "Rice milk",
+    "Code": "",
+    "Year": 2013,
+    "Land use of milks (m2)": 0.336,
+    "GHG emissions of milks (kg CO2eq)": 1.181659182,
+    "Water use of milks (L)": 269.808,
+    "Eutrophication from milks (g PO43-eq)": 4.69270482
+  },
+  {
+    "Entity": "Soy milk",
+    "Code": "",
+    "Year": 2013,
+    "Land use of milks (m2)": 0.66,
+    "GHG emissions of milks (kg CO2eq)": 0.98,
+    "Water use of milks (L)": 27.8,
+    "Eutrophication from milks (g PO43-eq)": 1.06
+  }
+]

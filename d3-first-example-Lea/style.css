@@ -1,0 +1,21 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: rgb(255, 253, 234); /* Apply background only to body */
+}
+
+#container {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+h1 {
+  font-size: 20px;
+  font-family: Arial, sans-serif;
+  margin-top: 20px;
+  margin-left: 20px;
+}

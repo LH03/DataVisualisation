@@ -127,6 +127,20 @@ function drawChart(data, selectedCategory, displayName) {
     .domain([0, maxValue])
     .range([height - marginBottom, marginTop]);
 
+  // Create a color scale based on the category with darker colors
+  const categoryColors = {
+    food_emissions_land_use: "#2c7a58",
+    food_emissions_farm: "#a04e2d",
+    food_emissions_animal_feed: "#4d5a9e",
+    food_emissions_processing: "#8e356a",
+    food_emissions_transport: "#5e7d2f",
+    food_emissions_retail: "#b38b15",
+    food_emissions_packaging: "#7b6040",
+    food_emissions_losses: "#5a5a5a",
+  };
+
+  const selectedColor = categoryColors[selectedCategory] || "steelblue";
+
   // Create a tooltip div
   const tooltip = d3
     .select("body")
@@ -146,22 +160,15 @@ function drawChart(data, selectedCategory, displayName) {
     .selectAll("rect")
     .data(chartData)
     .join("rect")
-    .attr("fill", "steelblue")
+    .attr("fill", selectedColor) // Use the darker color for the selected category
     .attr("x", (d) => x(d.name))
-    .attr("y", (d) => {
-      // Ensure we're using a valid number for the y position
-      return y(Math.max(0, d.value));
-    })
-    .attr("height", (d) => {
-      // Calculate height more carefully
-      const barHeight = height - y(Math.max(0, d.value)) - marginBottom;
-      console.log(`Height for ${d.name}: ${barHeight}`); // Debug log
-      return Math.max(0, barHeight); // Ensure non-negative height
-    })
+    .attr("y", (d) => y(Math.max(0, d.value)))
+    .attr("height", (d) =>
+      Math.max(0, height - y(Math.max(0, d.value)) - marginBottom)
+    )
     .attr("width", x.bandwidth())
     .on("mouseover", function (event, d) {
-      // Ensure we're selecting the entire bar
-      d3.select(this).attr("fill", "darkblue").raise(); // This brings the bar to the front
+      d3.select(this).attr("stroke", "white").attr("stroke-width", 2);
 
       tooltip
         .style("opacity", 1)
@@ -170,7 +177,7 @@ function drawChart(data, selectedCategory, displayName) {
         .style("top", event.pageY - 10 + "px");
     })
     .on("mouseout", function () {
-      d3.select(this).attr("fill", "steelblue");
+      d3.select(this).attr("stroke", null);
 
       tooltip.style("opacity", 0);
     })
@@ -205,6 +212,7 @@ function drawChart(data, selectedCategory, displayName) {
     .attr("y", marginTop / 2)
     .attr("text-anchor", "middle")
     .attr("font-size", "16px")
+    .attr("fill", "black") // Set the title color to black
     .text(`${displayName} Emissions by Food Product`);
 
   // Append the SVG element

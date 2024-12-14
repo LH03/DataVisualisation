@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CO2 Emissions vs Launch Frequency</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <!-- HUD Elements -->
+    <div class="hud top">
+      <img src="img/decoration top.png" alt="Top HUD">
+    </div>
+    <div class="hud left">
+      <img src="img/Decoration Side left.png" alt="Left HUD">
+    </div>
+    <div class="hud right">
+      <img src="img/decoration side right.png" alt="Right HUD">
+    </div>
+    <div class="hud bottom">
+      <img src="img/decoration bottom.png" alt="Bottom HUD">
+    </div>
+
+    <header>
+      <h1>CO2 EMISSIONS VS LAUNCH FREQUENCY</h1>
+    </header>
+
+    <main>
+      <div class="chart-section">
+        <!-- Background Box -->
+        <div class="chart-background">
+          <img src="img/Info Box-Chart.png" alt="Chart Background">
+          <svg class="chart" id="bar-chart"></svg>
+        </div>
+        <div class="rocket-container">
+          <img src="img/Rocket.png" alt="Rocket">
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>Data powered by space statistics</p>
+    </footer>
+  </div>
+
+  <script src="main.js" defer></script>
+</body>
+
+</html>

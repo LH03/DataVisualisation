@@ -1,9 +1,9 @@
-// Set up SVG canvas dimensions and margins
+// dimensions and margins of canvas
 const margin = { top: 20, right: 30, bottom: 60, left: 0 };
 const width = 800 - margin.left - margin.right;
 const height = 400 - margin.top - margin.bottom;
 
-// Append SVG container
+// append svg container
 const svg = d3
   .select("#bar-chart")
   .attr("width", width + margin.left + margin.right)
@@ -11,24 +11,23 @@ const svg = d3
   .append("g")
   .attr("transform", `translate(${margin.left},${margin.top})`);
 
-// Add a glow filter definition with a fixed white color
 const defs = svg.append("defs");
 
 const filter = defs.append("filter").attr("id", "glow");
 filter
   .append("feGaussianBlur")
-  .attr("stdDeviation", "4") // Blur intensity for the glow
+  .attr("stdDeviation", "4")
   .attr("result", "coloredBlur");
 filter
   .append("feFlood")
-  .attr("flood-color", "white") // Set the glow color to white
-  .attr("flood-opacity", "1"); // Full opacity for the glow
+  .attr("flood-color", "white")
+  .attr("flood-opacity", "1");
 filter.append("feComposite").attr("in2", "coloredBlur").attr("operator", "in");
 const feMerge = filter.append("feMerge");
 feMerge.append("feMergeNode").attr("in", "coloredBlur");
 feMerge.append("feMergeNode").attr("in", "SourceGraphic");
 
-// Create a tooltip div
+// div for the tooltip
 const tooltip = d3
   .select("body")
   .append("div")
@@ -41,12 +40,12 @@ const tooltip = d3
   .style("pointer-events", "none")
   .style("opacity", 0);
 
-// Define a muted color palette for stacked bars
+// color palette for bars
 const colorPalette = d3.scaleOrdinal([
-  "#6e6e6e", // Dark gray
-  "#8c8c8c", // Medium gray
-  "#b0b0b0", // Light gray
-  "#e0e0e0", // Off-white
+  "#6e6e6e",
+  "#8c8c8c",
+  "#aeaeae",
+  "#6e6e6e",
 ]);
 
 // Load the data
@@ -76,14 +75,14 @@ d3.json("data.json").then((data) => {
     })
   );
 
-  // Define xScale for decades
+  // add x-scale
   const xScale = d3
     .scaleBand()
     .domain(decades.map((d) => d.Decade))
     .range([0, width])
     .padding(0.2);
 
-  // Define yScale for CO2 emissions (total values)
+  // add y-scale
   const yScale = d3
     .scaleLinear()
     .domain([
@@ -94,7 +93,7 @@ d3.json("data.json").then((data) => {
     ])
     .range([height, 0]);
 
-  // Add bars for Total CO2 emissions
+  // bars for total co2 emissions
   svg
     .selectAll(".co2-bar")
     .data(decades)
@@ -128,7 +127,7 @@ d3.json("data.json").then((data) => {
       tooltip.style("opacity", 0);
     });
 
-  // Add stacked bars for launches
+  // stacked bars for launches
   const launchGroups = svg
     .selectAll(".stacked-bar")
     .data(decades)
@@ -174,7 +173,7 @@ d3.json("data.json").then((data) => {
     });
   });
 
-  // Add x-axis
+  // add an x-axis
   svg
     .append("g")
     .attr("transform", `translate(0,${height})`)
@@ -184,19 +183,19 @@ d3.json("data.json").then((data) => {
     .style("text-anchor", "middle")
     .style("fill", "white");
 
-  // Add legend
+  // add legend
   const legend = svg.append("g").attr("class", "legend");
   legend
     .append("rect")
     .attr("x", width - 150)
-    .attr("y", -10)
+    .attr("y", -20)
     .attr("width", 15)
     .attr("height", 15)
     .attr("fill", "#ffffff");
   legend
     .append("text")
     .attr("x", width - 130)
-    .attr("y", 2)
+    .attr("y", -8)
     .text("Total CO2 Emissions")
     .attr("fill", "white")
     .style("font-size", "12px");
@@ -204,14 +203,14 @@ d3.json("data.json").then((data) => {
   legend
     .append("rect")
     .attr("x", width - 150)
-    .attr("y", 20)
+    .attr("y", 10)
     .attr("width", 15)
     .attr("height", 15)
     .attr("fill", "#8c8c8c");
   legend
     .append("text")
     .attr("x", width - 130)
-    .attr("y", 32)
+    .attr("y", 22)
     .text("Launches per Country")
     .attr("fill", "white")
     .style("font-size", "12px");

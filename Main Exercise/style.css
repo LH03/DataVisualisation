@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Rajdhani";
   src: url("font/Rajdhani-SemiBold.ttf") format("truetype");
-  font-weight: 600; /* SemiBold is usually 600 */
+  font-weight: 600;
   font-style: normal;
 }
 
@@ -27,7 +27,7 @@ header {
 }
 
 header h1 {
-  font-size: 2.5em;
+  font-size: 3em;
   margin: 0;
   text-transform: uppercase;
   color: white;
@@ -50,7 +50,7 @@ main {
   justify-content: space-between;
   align-items: flex-start;
   width: 80%;
-  margin-top: 50px;
+  margin-top: 20px;
   margin-left: 100px;
 }
 
@@ -121,24 +121,28 @@ footer {
 
 footer {
   position: fixed;
-  bottom: 10px; /* Adjust this value to control how far from the bottom */
+  bottom: 10px;
   width: 100%;
   text-align: center;
 }
 
 #bar-chart {
-  margin-top: 30px;
+  margin-top: 50px;
   margin-left: 50px;
 }
 
 .tooltip {
   position: absolute;
-  background-color: #f0f0f0; /* Light grey background */
-  color: #000; /* Black text */
+  background-color: #f0f0f0;
+  color: #000;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
   pointer-events: none;
   font-size: 12px;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2); /* Optional: adds a subtle shadow */
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+footer a {
+  color: inherit;
 }
